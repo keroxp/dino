@@ -1,6 +1,5 @@
 # dino
-1KB Minimalistic DI (Dependency Injection) library
-
+1KB type safe DI (Dependency Injection) library for Deno/Node
 ## Usage
 
 ```ts
