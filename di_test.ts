@@ -12,7 +12,9 @@ interface Values {
 
 test("basic", () => {
   const di = new DI<Values>();
+  assertEquals(di.has("value"), false);
   di.set("value", 1);
+  assertEquals(di.has("value"), true);
   assertThrows(
     () => {
       di.get("str");
@@ -29,6 +31,9 @@ test("basic", () => {
     Error,
     "value is not registered",
   );
+  di.set("str", "str");
+  di.unset("str");
+  assertEquals(di.has("str"), false);
 });
 
 test("domain", () => {
