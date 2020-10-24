@@ -15,4 +15,4 @@ jobs:
         git diff --exit-code
     - name: Run Tests
       run: |
-        make test
+        deno test -A
