@@ -1,0 +1,18 @@
+name: CI
+
+on: ["push"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: denolib/setup-deno@master
+    - name: Fmt check
+      run: deno fmt --check
+    - name: Package check
+      run: |
+        make node/package.json
+        git diff --exit-code
+    - name: Run Tests
+      run: |
+        make test
