@@ -1,0 +1,14 @@
+{
+  "name": "@keroxp/dino",
+  "version": "1.0.0-rc1",
+  "main": "di/di.js",
+  "publishConfig": {
+    "registry": "https://npm.pgk.github.com"
+  },
+  "repository": "https://github.com/keroxp/dino",
+  "license": "MIT",
+  "types": "dist/di.d.ts",
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}

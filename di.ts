@@ -1,11 +1,11 @@
 // (c) 2020 Yusuke Sakurai. MIT License.
-export class DI<R> {
-  private readonly registry = new Map<any, any>();
-  constructor(parent: Map<any, any> = new Map<any, any>()) {
-    this.registry = new Map<any, any>(parent.entries());
+export class DI<R, K extends keyof R = keyof R> {
+  private readonly registry = new Map<K, any>();
+  constructor(parent: Map<K, any> = new Map<K, any>()) {
+    this.registry = new Map<K, any>(parent.entries());
   }
 
-  get<K extends keyof R>(key: K): R[K] {
+  get(key: K): R[K] {
     const val = this.registry.get(key);
     if (!val) {
       throw new Error(`${key} is not registered`);
@@ -13,8 +13,16 @@ export class DI<R> {
     return val;
   }
 
-  set<K extends keyof R>(key: K, value: R[K]): void {
+  has(key: K): boolean {
+    return this.registry.has(key);
+  }
+
+  set(key: K, value: R[K]): void {
     this.registry.set(key, value);
+  }
+
+  unset(key: K): void {
+    this.registry.delete(key);
   }
 
   reset() {
