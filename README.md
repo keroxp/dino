@@ -3,10 +3,32 @@
 
 1KB type safe DI (Dependency Injection) library for Deno/Node
 
+
+## Installation
+
+### Deno
+
+```ts
+import {DI} from "https://deno.land/x/dino@{version}/mod.ts"
+```
+
+### Node
+
+Add configuration to `.npmrc`
+```
+@keroxp:registry="https://npm.pkg.github.com"
+```
+```bash
+npm install @keroxp/dino
+```
+
+```ts
+import {DI} from "@keroxp/dino"
+```
+
 ## Usage
 
 ```ts
-import {DI} from "https://deno.land/x/dino/mod.ts"
 interface Deps {
   service: IService
   repository: IRepository
