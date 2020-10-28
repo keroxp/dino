@@ -22,7 +22,8 @@ test("basic", () => {
     Error,
     "str is not registered",
   );
-  assertEquals(di.get("value"), 1);
+  const n: number = di.get("value");
+  assertEquals(n, 1);
   di.reset();
   assertThrows(
     () => {
