@@ -60,3 +60,14 @@ repository.get("key"); // <- type safe
 di.set("something");
 di.get("anything");
 ```
+
+## Lazy Loader
+
+```ts
+
+const di = new DI<{something: number}>()
+di.setLazy("something", () => 1);
+di.has("something") // false
+const val = di.get("something") // 1
+
+```
