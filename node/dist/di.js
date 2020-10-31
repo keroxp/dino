@@ -1,35 +1,43 @@
-"use strict";
-exports.__esModule = true;
-exports.DI = void 0;
 // (c) 2020 Yusuke Sakurai. MIT License.
-var DI = /** @class */ (function () {
-    function DI(parent) {
-        if (parent === void 0) { parent = new Map(); }
+export class DI {
+    constructor() {
         this.registry = new Map();
-        this.registry = new Map(parent.entries());
+        this.flags = new Map();
+        this.loaders = new Map();
     }
-    DI.prototype.get = function (key) {
-        var val = this.registry.get(key);
-        if (!val) {
-            throw new Error(key + " is not registered");
+    get(key) {
+        if (this.has(key)) {
+            return this.registry.get(key);
         }
+        return this.load(key);
+    }
+    load(key) {
+        const loader = this.loaders.get(key);
+        if (!loader) {
+            throw new Error(`${key} is not registered`);
+        }
+        const val = loader();
+        this.set(key, val);
+        this.loaders.delete(key);
         return val;
-    };
-    DI.prototype.has = function (key) {
-        return this.registry.has(key);
-    };
-    DI.prototype.set = function (key, value) {
+    }
+    has(key) {
+        return this.flags.has(key);
+    }
+    set(key, value) {
         this.registry.set(key, value);
-    };
-    DI.prototype.unset = function (key) {
-        this.registry["delete"](key);
-    };
-    DI.prototype.reset = function () {
+        this.flags.set(key, true);
+    }
+    setLazy(key, loader) {
+        this.loaders.set(key, loader);
+    }
+    unset(key) {
+        this.registry.delete(key);
+        this.flags.delete(key);
+    }
+    reset() {
         this.registry.clear();
-    };
-    DI.prototype.domain = function () {
-        return new DI(this.registry);
-    };
-    return DI;
-}());
-exports.DI = DI;
+        this.flags.clear();
+    }
+}
+

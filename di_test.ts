@@ -37,14 +37,24 @@ test("basic", () => {
   assertEquals(di.has("str"), false);
 });
 
-test("domain", () => {
-  const di = new DI<Values>();
-  di.set("value", 1);
-  const domain = di.domain();
-  assertEquals(domain.get("value"), 1);
-  domain.set("value", 2);
-  assertEquals(domain.get("value"), 2);
-  assertEquals(di.get("value"), 1);
-  domain.reset();
-  assertEquals(di.get("value"), 1);
+test("set undefined", () => {
+  const di = new DI<{
+    opts: boolean | undefined | null;
+  }>();
+  assertEquals(di.has("opts"), false);
+  di.set("opts", undefined);
+  assertEquals(di.has("opts"), true);
+  di.set("opts", null);
+  assertEquals(di.has("opts"), true);
+});
+
+test("lazy", () => {
+  const di = new DI<{
+    date: Date;
+  }>();
+  const date = new Date();
+  di.setLazy("date", () => date);
+  assertEquals(di.has("date"), false);
+  assertEquals(di.get("date"), date);
+  assertEquals(di.get("date"), date);
 });
