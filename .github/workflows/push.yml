@@ -15,7 +15,7 @@ jobs:
         git diff --exit-code
     - name: 1KB Check
       run: |
-        tools/1kb.ts
+        deno run --allow-read=node/dist/di.js tools/1kb.ts
     - name: Run Tests
       run: |
         deno test -A
