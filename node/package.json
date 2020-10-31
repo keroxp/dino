@@ -1,6 +1,6 @@
 {
   "name": "@keroxp/dino",
-  "version": "1.1.2",
+  "version": "2.0.0",
   "main": "dist/di.js",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

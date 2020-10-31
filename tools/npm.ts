@@ -27,6 +27,8 @@ async function tsc() {
         "dist",
         "--lib",
         "es2020",
+        "--target",
+        "es2018",
       ],
     },
   ).status();
