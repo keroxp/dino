@@ -1,15 +1,15 @@
-# dino 
+# dino
+
 ![CI](https://github.com/keroxp/dino/workflows/CI/badge.svg)
 
 1KB type safe DI (Dependency Injection) library for Deno/Node
-
 
 ## Installation
 
 ### Deno
 
 ```ts
-import {DI} from "https://deno.land/x/dino@{version}/mod.ts"
+import { DI } from "https://deno.land/x/dino@{version}/mod.ts";
 ```
 
 ### Node
@@ -19,40 +19,40 @@ npm install @keroxp/dino
 ```
 
 ```ts
-import {DI} from "@keroxp/dino"
+import { DI } from "@keroxp/dino";
 ```
 
 ## Usage
 
 ```ts
 interface Deps {
-  service: IService
-  repository: IRepository
+  service: IService;
+  repository: IRepository;
 }
 interface IService {
-  send(message: string): Promise<void>
+  send(message: string): Promise<void>;
 }
 class Service implements IService {
   async send(message: string) {}
 }
 interface IRepository {
-  get(key: string): string
+  get(key: string): string;
 }
 class Respository implements IRepository {
   get(key: string): string {
-    return "value"
+    return "value";
   }
 }
 const di = new DI<Deps>(); // <- instantiate with dependency types
-di.set("service", new Service())
-di.set("repository", new Repository())
+di.set("service", new Service());
+di.set("repository", new Repository());
 
-const service = di.get("service"); 
+const service = di.get("service");
 service.send("message"); // <- type safe
-const repository = di.get("repository"); 
+const repository = di.get("repository");
 repository.get("key"); // <- type safe
 
- // error (doesn't exist in Deps)
+// error (doesn't exist in Deps)
 di.set("something");
 di.get("anything");
 ```
@@ -60,10 +60,8 @@ di.get("anything");
 ## Lazy Loader
 
 ```ts
-
-const di = new DI<{something: number}>()
+const di = new DI<{ something: number }>();
 di.setLazy("something", () => 1);
-di.has("something") // false
-const val = di.get("something") // 1
-
+di.has("something"); // false
+const val = di.get("something"); // 1
 ```
