@@ -1,14 +1,14 @@
 {
   "name": "@keroxp/dino",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": "dist/di.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "repository": "https://github.com/keroxp/dino",
   "license": "MIT",
   "types": "dist/di.d.ts",
   "devDependencies": {
-    "typescript": "^4.0.3"
+    "typescript": "^4.3.5"
   }
 }
