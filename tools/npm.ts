@@ -30,7 +30,7 @@ async function tsc() {
         "--target",
         "es2018",
         "--module",
-        "commonjs"
+        "commonjs",
       ],
     },
   ).status();
