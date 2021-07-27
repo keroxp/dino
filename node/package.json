@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "main": "dist/di.js",
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "access": "public"
   },
   "repository": "https://github.com/keroxp/dino",
   "license": "MIT",
