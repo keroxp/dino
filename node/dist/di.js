@@ -1,5 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DI = void 0;
 // (c) 2020 Yusuke Sakurai. MIT License.
-export class DI {
+class DI {
     constructor() {
         this.registry = new Map();
         this.flags = new Map();
@@ -40,3 +43,4 @@ export class DI {
         this.flags.clear();
     }
 }
+exports.DI = DI;

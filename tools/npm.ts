@@ -29,6 +29,8 @@ async function tsc() {
         "es2020",
         "--target",
         "es2018",
+        "--module",
+        "commonjs"
       ],
     },
   ).status();
