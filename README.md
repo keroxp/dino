@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/keroxp/dino/workflows/CI/badge.svg)
 
-1KB type safe DI (Dependency Injection) library for Deno/Node
+Minimalistic type safe DI (Dependency Injection) library for Deno/Node
 
 ## Installation
 

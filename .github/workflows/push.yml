@@ -13,9 +13,6 @@ jobs:
       run: |
         make node/package.json
         git diff --exit-code
-    - name: 1KB Check
-      run: |
-        deno run --allow-read=node/dist/di.js tools/1kb.ts
     - name: Run Tests
       run: |
         deno test -A
